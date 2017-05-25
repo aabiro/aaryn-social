@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0690668DB956B42DF66C820D /* Pods_aaryn_social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2BD5D6995010E041387AC4 /* Pods_aaryn_social.framework */; };
 		C583DCDA1ED7603F007503EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCD91ED7603F007503EB /* AppDelegate.swift */; };
-		C583DCDC1ED7603F007503EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCDB1ED7603F007503EB /* ViewController.swift */; };
+		C583DCDC1ED7603F007503EB /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCDB1ED7603F007503EB /* SignInVC.swift */; };
 		C583DCDF1ED7603F007503EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C583DCDD1ED7603F007503EB /* Main.storyboard */; };
 		C583DCE11ED7603F007503EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C583DCE01ED7603F007503EB /* Assets.xcassets */; };
 		C583DCE41ED7603F007503EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C583DCE21ED7603F007503EB /* LaunchScreen.storyboard */; };
+		C583DCEC1ED760DA007503EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C583DCEB1ED760DA007503EB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B2BD5D6995010E041387AC4 /* Pods_aaryn_social.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aaryn_social.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47CE1F2FEF352E66FE6B4A94 /* Pods-aaryn-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aaryn-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aaryn-social/Pods-aaryn-social.debug.xcconfig"; sourceTree = "<group>"; };
+		99B42F60F7E32D615D0A4F37 /* Pods-aaryn-social.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aaryn-social.release.xcconfig"; path = "Pods/Target Support Files/Pods-aaryn-social/Pods-aaryn-social.release.xcconfig"; sourceTree = "<group>"; };
 		C583DCD61ED7603F007503EB /* aaryn-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aaryn-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C583DCD91ED7603F007503EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C583DCDB1ED7603F007503EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C583DCDB1ED7603F007503EB /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		C583DCDE1ED7603F007503EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C583DCE01ED7603F007503EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C583DCE31ED7603F007503EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C583DCE51ED7603F007503EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C583DCEB1ED760DA007503EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0690668DB956B42DF66C820D /* Pods_aaryn_social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0112B183A7F26DDADFA37F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47CE1F2FEF352E66FE6B4A94 /* Pods-aaryn-social.debug.xcconfig */,
+				99B42F60F7E32D615D0A4F37 /* Pods-aaryn-social.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BDFF457BE357DEA6F20C4C23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B2BD5D6995010E041387AC4 /* Pods_aaryn_social.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C583DCCD1ED7603F007503EB = {
 			isa = PBXGroup;
 			children = (
 				C583DCD81ED7603F007503EB /* aaryn-social */,
 				C583DCD71ED7603F007503EB /* Products */,
+				B0112B183A7F26DDADFA37F9 /* Pods */,
+				BDFF457BE357DEA6F20C4C23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +80,39 @@
 		C583DCD81ED7603F007503EB /* aaryn-social */ = {
 			isa = PBXGroup;
 			children = (
+				C583DCED1ED762CD007503EB /* Model */,
+				C583DCEE1ED762D3007503EB /* View */,
+				C583DCEF1ED762D8007503EB /* Controller */,
 				C583DCD91ED7603F007503EB /* AppDelegate.swift */,
-				C583DCDB1ED7603F007503EB /* ViewController.swift */,
 				C583DCDD1ED7603F007503EB /* Main.storyboard */,
 				C583DCE01ED7603F007503EB /* Assets.xcassets */,
 				C583DCE21ED7603F007503EB /* LaunchScreen.storyboard */,
+				C583DCEB1ED760DA007503EB /* GoogleService-Info.plist */,
 				C583DCE51ED7603F007503EB /* Info.plist */,
 			);
 			path = "aaryn-social";
+			sourceTree = "<group>";
+		};
+		C583DCED1ED762CD007503EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C583DCEE1ED762D3007503EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C583DCEF1ED762D8007503EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C583DCDB1ED7603F007503EB /* SignInVC.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C583DCE81ED7603F007503EB /* Build configuration list for PBXNativeTarget "aaryn-social" */;
 			buildPhases = (
+				6B8138C26D4F6FD931452AFA /* [CP] Check Pods Manifest.lock */,
 				C583DCD21ED7603F007503EB /* Sources */,
 				C583DCD31ED7603F007503EB /* Frameworks */,
 				C583DCD41ED7603F007503EB /* Resources */,
+				12474CD4E06B7812D08A7919 /* [CP] Embed Pods Frameworks */,
+				C4340B24BD67150AF8FABBC0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,17 +181,66 @@
 				C583DCE41ED7603F007503EB /* LaunchScreen.storyboard in Resources */,
 				C583DCE11ED7603F007503EB /* Assets.xcassets in Resources */,
 				C583DCDF1ED7603F007503EB /* Main.storyboard in Resources */,
+				C583DCEC1ED760DA007503EB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12474CD4E06B7812D08A7919 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aaryn-social/Pods-aaryn-social-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B8138C26D4F6FD931452AFA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C4340B24BD67150AF8FABBC0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aaryn-social/Pods-aaryn-social-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C583DCD21ED7603F007503EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C583DCDC1ED7603F007503EB /* ViewController.swift in Sources */,
+				C583DCDC1ED7603F007503EB /* SignInVC.swift in Sources */,
 				C583DCDA1ED7603F007503EB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,12 +364,13 @@
 		};
 		C583DCE91ED7603F007503EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47CE1F2FEF352E66FE6B4A94 /* Pods-aaryn-social.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6MHMN42R5T;
 				INFOPLIST_FILE = "aaryn-social/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "A-Corp.aaryn-social";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aaryn.aaryn-social";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -274,12 +378,13 @@
 		};
 		C583DCEA1ED7603F007503EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99B42F60F7E32D615D0A4F37 /* Pods-aaryn-social.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6MHMN42R5T;
 				INFOPLIST_FILE = "aaryn-social/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "A-Corp.aaryn-social";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aaryn.aaryn-social";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -304,6 +409,7 @@
 				C583DCEA1ED7603F007503EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
