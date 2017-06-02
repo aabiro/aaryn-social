@@ -8,16 +8,51 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    @nonobjc func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
+    
+    //need to change to this!! ALSO need to enable keychain sharing in capabilities
+  func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil)
         -> Bool {
             FirebaseApp.configure()
+            
+            
+            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+            
+            
+            
+         //as given on FB
+//            //  AppDelegate.m
+//            #import <FBSDKCoreKit/FBSDKCoreKit.h>
+//            
+//            - (BOOL)application:(UIApplication *)application
+//            didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//                
+//                [[FBSDKApplicationDelegate sharedInstance] application:application
+//                    didFinishLaunchingWithOptions:launchOptions];
+//                // Add any custom logic here.
+//                return YES;
+//                }
+//                
+//                - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+//            sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//                
+//                BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+//                    openURL:url
+//                    sourceApplication:sourceApplication
+//                    annotation:annotation
+//                ];
+//                // Add any custom logic here.
+//                return handled;
+//            } 
+
+            
             return true
     }
 
@@ -41,6 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    
+    //handle cross app stuff
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any ) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
 

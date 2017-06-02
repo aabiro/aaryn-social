@@ -36,6 +36,7 @@
 		C583DD101ED7891E007503EB /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		C583DD131ED789A4007503EB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C583DD1D1ED78DBD007503EB /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
+		C5E6808E1EE20A7A00C02DBE /* aaryn-social.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "aaryn-social.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 		C583DCD81ED7603F007503EB /* aaryn-social */ = {
 			isa = PBXGroup;
 			children = (
+				C5E6808E1EE20A7A00C02DBE /* aaryn-social.entitlements */,
 				C583DD121ED7898F007503EB /* Util */,
 				C583DCED1ED762CD007503EB /* Model */,
 				C583DCEE1ED762D3007503EB /* View */,
@@ -172,6 +174,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 6MHMN42R5T;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -391,6 +398,7 @@
 			baseConfigurationReference = 47CE1F2FEF352E66FE6B4A94 /* Pods-aaryn-social.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "aaryn-social/aaryn-social.entitlements";
 				DEVELOPMENT_TEAM = 6MHMN42R5T;
 				INFOPLIST_FILE = "aaryn-social/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -405,6 +413,7 @@
 			baseConfigurationReference = 99B42F60F7E32D615D0A4F37 /* Pods-aaryn-social.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "aaryn-social/aaryn-social.entitlements";
 				DEVELOPMENT_TEAM = 6MHMN42R5T;
 				INFOPLIST_FILE = "aaryn-social/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

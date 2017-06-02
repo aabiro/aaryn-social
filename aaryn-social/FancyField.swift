@@ -2,7 +2,7 @@
 //  FancyField.swift
 //  aaryn-social
 //
-//  Created by Maureen Biro on 2017-05-25.
+//  Created by Aaryn Biro on 2017-05-25.
 //  Copyright © 2017 Aaryn Biro. All rights reserved.
 //
 
