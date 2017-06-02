@@ -11,13 +11,57 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var passwordField: FancyField!
+    @IBOutlet weak var emailField: FancyField!
+    
+    
+    var writingText = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        
+        passwordField.delegate = self
+        emailField.delegate = self
+        
+      
+        passwordField.returnKeyType = UIReturnKeyType.done
+        emailField.returnKeyType = UIReturnKeyType.done
+        
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
 
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        //key storke in search bar is change, this is called
+//        if searchBar.text == nil || searchBar.text == "" {
+//            inSearchMode = false
+//            //collection.reloadData()
+//            view.endEditing(true)
+//            searchBar.resignFirstResponder()
+//        } else {
+//            inSearchMode = true
+//            //if included in pokemon name
+//            
+//            
+//        }
+//    }
+
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -26,6 +70,8 @@ class SignInVC: UIViewController {
     @IBAction func fbBtnTapped(_ sender: Any) {
         //for authenticating - 2 steps -- 1 - w provider, 2 - w firebase
         
+        
+        //step 1
         //checkin 2 facebook for go ahead
         let facebookLogin = FBSDKLoginManager()
         
@@ -66,6 +112,37 @@ class SignInVC: UIViewController {
             }
             
             })
+    }
+    
+    
+    //authenticating user sign in
+    @IBAction func signInBtnPressed(_ sender: Any) {
+        if let email = emailField.text, let password = passwordField.text {
+            //should make popup if these are empty
+            
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+                if error != nil {
+                    print("AARYN: Email user authenticated with Firebase")
+
+                } else {
+                    //look at errors on firebase docs if run into problems
+                    
+                    //ex user does not exist
+                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                        if error != nil {
+                        print("AARYN: Unable to authenticate with Firebase using email")
+                        } else {
+                            print("AARYN: Successfully authenticated with Firebase")
+                        }
+                        
+                    })
+                }
+            })
+        
+        
+        }
+    
+
     }
 
 }
