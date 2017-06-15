@@ -12,6 +12,7 @@
 		C542A39D1EF08F62008D22EA /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A39C1EF08F62008D22EA /* CircleView.swift */; };
 		C542A39F1EF1BADD008D22EA /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A39E1EF1BADD008D22EA /* PostCell.swift */; };
 		C542A3A21EF1FAE7008D22EA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A3A11EF1FAE7008D22EA /* DataService.swift */; };
+		C542A3A41EF210CA008D22EA /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A3A31EF210CA008D22EA /* Posts.swift */; };
 		C583DCDA1ED7603F007503EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCD91ED7603F007503EB /* AppDelegate.swift */; };
 		C583DCDC1ED7603F007503EB /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCDB1ED7603F007503EB /* SignInVC.swift */; };
 		C583DCDF1ED7603F007503EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C583DCDD1ED7603F007503EB /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		C542A39C1EF08F62008D22EA /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		C542A39E1EF1BADD008D22EA /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C542A3A11EF1FAE7008D22EA /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		C542A3A31EF210CA008D22EA /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		C583DCD61ED7603F007503EB /* aaryn-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aaryn-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C583DCD91ED7603F007503EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C583DCDB1ED7603F007503EB /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		C583DCED1ED762CD007503EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C542A3A31EF210CA008D22EA /* Posts.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				C583DD141ED789A4007503EB /* Constants.swift in Sources */,
 				C583DD0F1ED786CD007503EB /* CircleButton.swift in Sources */,
 				C542A39F1EF1BADD008D22EA /* PostCell.swift in Sources */,
+				C542A3A41EF210CA008D22EA /* Posts.swift in Sources */,
 				C583DCDC1ED7603F007503EB /* SignInVC.swift in Sources */,
 				C583DD111ED7891E007503EB /* FancyView.swift in Sources */,
 				C583DCDA1ED7603F007503EB /* AppDelegate.swift in Sources */,

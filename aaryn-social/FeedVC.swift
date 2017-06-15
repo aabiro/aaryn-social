@@ -15,21 +15,42 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    //array of posts
+    var posts = [Posts]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        //listener
         //gives back all firebase database JSON info - listener
         DataService.ds.REF_POSTS.observe(.value, with: { (DataSnapshot) in
-        print(DataSnapshot.value!)
+        //print(DataSnapshot.value!)  //shows DataSnapshot collection
+            
+            //organize into objects  - SNAPS
+            //use these in Posts model
+            if let snapshot = DataSnapshot.children.allObjects as? [Firebase.DataSnapshot] {
+            for snap in snapshot {
+                print("SNAP: \(snap) " )
+                if let postDict = snap.value as? Dictionary<String, AnyObject> {
+                    let key = snap.key
+                    let post = Posts(postKey: key, postData: postDict)
+                    self.posts.append(post)
+                    
+                }
+                
+                }
+            }
+               //remember to refresh data!!!
+            self.tableView.reloadData()
 
         })
         
         
-        
+     
         
         
     }
@@ -41,11 +62,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        return posts.count
     }
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        //a test
+        let post = posts[indexPath.row]
+        print("AARYN: \(post.caption)")
+        
+        
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell{
         return cell
