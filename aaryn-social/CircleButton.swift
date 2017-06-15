@@ -35,23 +35,10 @@ class CircleButton: UIButton {
         
         
         
-        
-        
     }
     
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//       // layer.cornerRadius = cornerRadius
-//
-//        //layer.cornerRadius = self.frame.width / 2 //to get circle
-//        
-//    }
-//    
-    
-    
-    
+    //need to do on interface builder TOO for buttons!!
     @IBInspectable var cornerRadius: CGFloat = 10.0 {  //round to half of width/height for perfect circle
         
         
@@ -69,6 +56,8 @@ class CircleButton: UIButton {
     
     func setupView(){
         layer.cornerRadius = cornerRadius
+        //layer.cornerRadius = self.frame.width / 2 //for circle
+        clipsToBounds = true
         
     }
     

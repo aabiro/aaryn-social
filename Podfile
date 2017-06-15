@@ -10,7 +10,7 @@ target 'aaryn-social' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-  #pod 'SwiftKeyChainWrapper'
+  pod 'SwiftKeychainWrapper'
   pod 'FBSDKLoginKit'
 
 end

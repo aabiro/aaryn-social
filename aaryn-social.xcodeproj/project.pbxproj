@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0690668DB956B42DF66C820D /* Pods_aaryn_social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2BD5D6995010E041387AC4 /* Pods_aaryn_social.framework */; };
+		C542A39B1EF07E7D008D22EA /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A39A1EF07E7D008D22EA /* FeedVC.swift */; };
+		C542A39D1EF08F62008D22EA /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A39C1EF08F62008D22EA /* CircleView.swift */; };
+		C542A39F1EF1BADD008D22EA /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A39E1EF1BADD008D22EA /* PostCell.swift */; };
+		C542A3A21EF1FAE7008D22EA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542A3A11EF1FAE7008D22EA /* DataService.swift */; };
 		C583DCDA1ED7603F007503EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCD91ED7603F007503EB /* AppDelegate.swift */; };
 		C583DCDC1ED7603F007503EB /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C583DCDB1ED7603F007503EB /* SignInVC.swift */; };
 		C583DCDF1ED7603F007503EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C583DCDD1ED7603F007503EB /* Main.storyboard */; };
@@ -24,6 +28,10 @@
 		3B2BD5D6995010E041387AC4 /* Pods_aaryn_social.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aaryn_social.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CE1F2FEF352E66FE6B4A94 /* Pods-aaryn-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aaryn-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aaryn-social/Pods-aaryn-social.debug.xcconfig"; sourceTree = "<group>"; };
 		99B42F60F7E32D615D0A4F37 /* Pods-aaryn-social.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aaryn-social.release.xcconfig"; path = "Pods/Target Support Files/Pods-aaryn-social/Pods-aaryn-social.release.xcconfig"; sourceTree = "<group>"; };
+		C542A39A1EF07E7D008D22EA /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		C542A39C1EF08F62008D22EA /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		C542A39E1EF1BADD008D22EA /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		C542A3A11EF1FAE7008D22EA /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C583DCD61ED7603F007503EB /* aaryn-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "aaryn-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C583DCD91ED7603F007503EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C583DCDB1ED7603F007503EB /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -68,6 +76,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C542A3A01EF1FACB008D22EA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C542A3A11EF1FAE7008D22EA /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		C583DCCD1ED7603F007503EB = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +105,7 @@
 		C583DCD81ED7603F007503EB /* aaryn-social */ = {
 			isa = PBXGroup;
 			children = (
+				C542A3A01EF1FACB008D22EA /* Services */,
 				C5E6808E1EE20A7A00C02DBE /* aaryn-social.entitlements */,
 				C583DD121ED7898F007503EB /* Util */,
 				C583DCED1ED762CD007503EB /* Model */,
@@ -117,6 +134,8 @@
 				C583DD0E1ED786CD007503EB /* CircleButton.swift */,
 				C583DD101ED7891E007503EB /* FancyView.swift */,
 				C583DD1D1ED78DBD007503EB /* FancyField.swift */,
+				C542A39C1EF08F62008D22EA /* CircleView.swift */,
+				C542A39E1EF1BADD008D22EA /* PostCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -125,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				C583DCDB1ED7603F007503EB /* SignInVC.swift */,
+				C542A39A1EF07E7D008D22EA /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -267,12 +287,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C542A39D1EF08F62008D22EA /* CircleView.swift in Sources */,
 				C583DD1E1ED78DBD007503EB /* FancyField.swift in Sources */,
+				C542A39B1EF07E7D008D22EA /* FeedVC.swift in Sources */,
 				C583DD141ED789A4007503EB /* Constants.swift in Sources */,
 				C583DD0F1ED786CD007503EB /* CircleButton.swift in Sources */,
+				C542A39F1EF1BADD008D22EA /* PostCell.swift in Sources */,
 				C583DCDC1ED7603F007503EB /* SignInVC.swift in Sources */,
 				C583DD111ED7891E007503EB /* FancyView.swift in Sources */,
 				C583DCDA1ED7603F007503EB /* AppDelegate.swift in Sources */,
+				C542A3A21EF1FAE7008D22EA /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

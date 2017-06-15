@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController, UITextFieldDelegate {
 
@@ -21,6 +22,8 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         
         passwordField.delegate = self
@@ -38,10 +41,29 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //neeed to do segues in ViewDidAppear, not viewdidLoad
+        
+        
+        //check for UID for saved profile
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("AARYN: ID found in keychain")
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+    }
+    
+    
+    //for done button keyboard functionality
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        self.view.endEditing(true)
     }
     
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -78,7 +100,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
                 //tag to easily find error
-                print("AARYN: Unable to authenticate with Facebook - \(error)")
+                print("AARYN: Unable to authenticate with Facebook - \(String(describing: error))")
             } else if result?.isCancelled == true {
                 print("AARYN: User cancelled FB Authentication")
             } else {
@@ -102,37 +124,59 @@ class SignInVC: UIViewController, UITextFieldDelegate {
 
 }
     
-    //for step 2 - auth w firebase
+    //for step 2 - auth w firebase - twitter / facebook
     func firebaseAuth(_ credential: AuthCredential){
         Auth.auth().signIn(with: credential, completion: { (user, error) in
             if error != nil {
-                print("AARYN: Unable to authenticate with Firebase - \(error)")
+                print("AARYN: Unable to authenticate with Firebase - \(String(describing: error))")
             } else {
                 print("AARYN: Successfully authenticated with Firebase")
+                //save UID info after authentication with firebase
+                if let user = user {
+                    //use colon - defining a dictionary
+                    let userData = ["provider": credential.provider]
+                           self.completeSignIn(id: user.uid, userData: userData)
+                }
             }
             
             })
     }
     
     
-    //authenticating user sign in
+    //problems
+    
+    //authenticating user sign in - email
     @IBAction func signInBtnPressed(_ sender: Any) {
         if let email = emailField.text, let password = passwordField.text {
             //should make popup if these are empty
-            
+            //existing user
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                 if error != nil {
                     print("AARYN: Email user authenticated with Firebase")
+                    print(error!)
+                    if let user = user {
+                        //use credential for provider other than email
+                        
+                            //not performing Segue here , no data saved to keychain
+                        let userData = ["provider": user.providerID]
+                       // print(user.providerID)
+                        self.completeSignIn(id: user.uid, userData: userData)
 
+                    }
                 } else {
                     //look at errors on firebase docs if run into problems
                     
-                    //ex user does not exist
+                    //ex user does not exist - create new one
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                         if error != nil {
                         print("AARYN: Unable to authenticate with Firebase using email")
                         } else {
                             print("AARYN: Successfully authenticated with Firebase")
+                            if let user = user {
+                                
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
+                            }
                         }
                         
                     })
@@ -143,6 +187,17 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         }
     
 
+    }
+    
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        
+        //auth using keychain
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID) //from cocoapod site documentation
+        print("AARYN: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+        
     }
 
 }
