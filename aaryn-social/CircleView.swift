@@ -38,6 +38,7 @@ class CircleView: UIImageView {
         
         super.layoutSubviews()
         layer.cornerRadius = self.frame.width / 2 //for circle
+        clipsToBounds = true
     }
 
 }

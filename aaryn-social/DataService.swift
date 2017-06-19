@@ -12,6 +12,9 @@ import Firebase
 
 
 let DB_BASE = Firebase.Database.database().reference() //contains URL of my database, taken from GoogleService.plist
+let STORAGE_BASE = Firebase.Storage.storage().reference() // url for firebase storage, need Firebase/Storage Pod
+
+
 
 class DataService {
     
@@ -20,6 +23,7 @@ class DataService {
     //singleton - instance of a class that is global and one instance
     static let ds = DataService()  //referencing itself, static, global
     
+    //DB References
     //singleton so everything here is globally accesssible
     //global variables are underscore capitalized
     //need references to posts and users
@@ -27,6 +31,11 @@ class DataService {
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("posts")
     private var _REF_USERS = DB_BASE.child("users")
+    
+    
+    //Storgae references
+    private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    
     
     
     //for security so noone can refernce private variables
@@ -41,6 +50,12 @@ class DataService {
     var REF_USERS: Firebase.DatabaseReference {
         return _REF_USERS
     }
+    
+    
+    var REF_POST_IMAGES: Firebase.StorageReference {
+        return _REF_POST_IMAGES
+    }
+    
     
     
     func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {
