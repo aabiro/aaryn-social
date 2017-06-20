@@ -2,17 +2,19 @@
 //  Posts.swift
 //  aaryn-social
 //
-//  Created by Maureen Biro on 2017-06-14.
+//  Created by Aaryn Biro on 2017-06-14.
 //  Copyright © 2017 Aaryn Biro. All rights reserved.
 //
 
 import Foundation
+import Firebase
 
 class Posts {
     private var _caption: String!
     private var _imageUrl: String!
     private var _likes: Int!
     private var _postKey: String!
+    private var _postRef: Firebase.DatabaseReference!
     
     var caption: String{
         return _caption
@@ -56,7 +58,18 @@ class Posts {
             self._likes = likes
         }
         
+        _postRef = DataService.ds.REF_POSTS.child(_postKey)
         
+        
+    }
+    
+    func adjustLikes(addlike: Bool){
+        if addlike {
+            _likes = _likes + 1
+        } else {
+            _likes = _likes - 1
+        }
+        _postRef.child("likes").setValue(_likes)
     }
     
 }

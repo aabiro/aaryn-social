@@ -14,12 +14,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 
     
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var captionField: FancyField!
+   
     
     //array of posts
     var posts = [Posts]()
     
     var imagePicker: UIImagePickerController!
+    
+    var imageSelected = false
     
     //static var imageCache: Cache<NSString, UIImage> = Cache()
     static var imageCache : NSCache<AnyObject, UIImage> = NSCache()
@@ -44,6 +47,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         //gives back all firebase database JSON info - listener
         DataService.ds.REF_POSTS.observe(.value, with: { (DataSnapshot) in
         //print(DataSnapshot.value!)  //shows DataSnapshot collection
+            
+            
+            //to stop dupilcated posts
+            self.posts = []  //clears post array each time
             
             //organize into objects  - SNAPS
             //use these in Posts model
@@ -94,11 +101,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             //check if image in cache and pass in
             if let img = FeedVC.imageCache.object(forKey: post.imageUrl as AnyObject) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
                 cell.configureCell(post: post) //not passes set image as nil
-                return cell
             }
+            return cell
             } else {
             return PostCell()
           //  return UITableViewCell()
@@ -110,11 +116,96 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         //get edited image selected, array of info that comes back (video or image) set to image need NSPhoto enabled in info.plist for photo access
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageAdd.image = image
+            imageSelected = true
+//        } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            imageAdd.image = image
+//            imageSelected = true
         } else {
             print("AARYN: A valid image was not selected")
         }
+        
         imagePicker.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func postBtnTapped(_ sender: Any) {
+        //gaurd statement - to stop chain of nested if/let statements
+        //make caption optional on my own
+//        
+//        gaurd let caption = captionField.text, let caption !="" else {
+//            print("AARYN: Caption has not been entered")
+//            return
+//        }
+//        gaurd let img = imageAdd.image else {
+//            print("AARYN: An image must be selected")
+//            return
+//        }
+
+        
+        
+        
+        //guard depricated 
+        // redone below - needs caption image to post
+        let caption = captionField.text
+        if caption == "" {
+            print("AARYN: Caption has not been entered")
+            }
+        
+        
+        let img = imageAdd.image
+        if imageSelected != true || img == nil {
+                    print("AARYN: An image must be selected")
+                    return
+                }
+        
+        
+        if let imgData = UIImageJPEGRepresentation(img!, 0.2) {
+            
+            let imgUid = NSUUID().uuidString //get the id - random string of characters
+            let metadata = Firebase.StorageMetadata()
+            //send metadata to jpeg so firebase knows what I am sending it
+            metadata.contentType = "image/jpeg"
+            
+            DataService.ds.REF_POST_IMAGES.child(imgUid).putData(imgData, metadata: metadata){ (metadata, error) in
+                if error != nil {
+                    print("AARYN: Unable to upload image to Firebase storgae because \(String(describing: error))")
+                } else {
+                    print("AARYN: Successfully uploaded image to Firebase Storage")
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                    
+                    if let url = downloadURL {
+                    self.postToFirebase(imageUrl: url)
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    
+    func postToFirebase(imageUrl: String) {
+        //get what I need to post
+        let post: Dictionary<String, AnyObject> = [
+            //need to match from firebase reference
+            "caption": captionField.text! as AnyObject,
+            "imageUrl": imageUrl as AnyObject,
+            "likes": 0 as AnyObject
+        ]
+        
+        //POST it!
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        //not updatechildvalues - updatechildvalues does not delete other ones - this is brand new post
+        firebasePost.setValue(post)
+        
+        
+        //clear to ready for new post 
+        
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
+    }
+    
     
     
     //drag Tap Gesture from hierarchy for IBaction option, WITH user Interaction enabled in inspector !!

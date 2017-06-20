@@ -242,6 +242,9 @@
                                                         <real key="value" value="24.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="postBtnTapped:" destination="7iq-LA-V6f" eventType="touchUpInside" id="umW-LD-CEO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -354,6 +357,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="NYz-Bo-HMq" id="TS9-eU-994"/>
+                                            <outlet property="likeImg" destination="H2G-Oa-B4m" id="QAn-Q1-Ru0"/>
                                             <outlet property="likesLbl" destination="BQ0-lT-SBL" id="Nd7-fc-Y0N"/>
                                             <outlet property="postImg" destination="buP-BR-J0K" id="U7S-KZ-FXJ"/>
                                             <outlet property="profileImg" destination="RlI-YF-7cf" id="8gk-d0-Ds1"/>
@@ -378,6 +382,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captionField" destination="9H4-KZ-2jF" id="5Cv-vz-c8C"/>
                         <outlet property="imageAdd" destination="xFP-MI-hE4" id="d7E-a4-y1G"/>
                         <outlet property="tableView" destination="08b-QA-Wid" id="nNx-JB-CFd"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="526-fY-yq7"/>
