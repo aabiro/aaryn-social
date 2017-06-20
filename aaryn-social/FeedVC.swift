@@ -10,7 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -68,13 +68,30 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             }
                //remember to refresh data!!!
             self.tableView.reloadData()
-
         })
         
+        self.captionField.delegate = self
+        //makes return = done
+        self.captionField.returnKeyType = UIReturnKeyType.done
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FeedVC.dismissKeyboard))
         
-     
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
         
         
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        captionField.resignFirstResponder()
+        return true
     }
     
     // next 3 functions for the tableview
